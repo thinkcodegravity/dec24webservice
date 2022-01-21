@@ -23,16 +23,11 @@ import io.swagger.annotations.*;
 @Api(description="this is my service to test get and post webservice")
 
 public class RestCalculator {
-		 
-	// http://localhost:8888/addCal/12/10
 	Logger log=Logger.getLogger("RestCalculator");
-	@ApiOperation(value="this is used for adding 2 numbers")
+		 
+	// http://localhost/addCal/12/10
 	@RequestMapping(value = "/addCal/{param1}/{param2}", method = RequestMethod.GET)
 	public int add(@PathVariable(name="param1") int param1, @PathVariable int param2) throws Exception {
-		log.debug("debugging");
-		log.info("information");
-		log.warn("warning");
-		log.error("error");
 		// debug >  info > warn > error
 		int	sum=param1 + param2;
 	
@@ -61,6 +56,7 @@ public class RestCalculator {
 	// http://localhost/jsonRes/1/2
 	@RequestMapping(value = "/jsonRes/{param1}/{param2}", 
 			method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+	@ApiOperation(value="this is used for performing basic math operation on 2 numbers")
 	public Output calculator(@PathVariable int param1, @PathVariable int param2) {
 		log.info("add json log4j");
 		Output res = new Output();
