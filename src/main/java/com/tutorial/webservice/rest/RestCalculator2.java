@@ -19,19 +19,13 @@ import com.google.common.net.HttpHeaders;
 
 import io.swagger.annotations.*;
 
-@RestController
-public class RestCalculator {
+//@RestController
+//@Api(description="this is my service to test get and post webservice")
+
+public class RestCalculator2 {
+	/*
 	Logger log=Logger.getLogger("RestCalculator");
-	
-	//  localhost/areaOfSquare/5
-	// configure this method/service with http URL
-	@RequestMapping(value = "/areaOfSquare/{input1}", method = RequestMethod.GET)
-	public int calculateSquare(@PathVariable(name="input1") int sides) {
-		int area=sides * sides;
-		return area;
-	}
-	
-	
+		 
 	// http://localhost/addCal/12/10
 	@RequestMapping(value = "/addCal/{param1}/{param2}", method = RequestMethod.GET)
 	public int add(@PathVariable(name="param1") int param1, @PathVariable int param2) throws Exception {
@@ -45,11 +39,11 @@ public class RestCalculator {
 	// http://localhost/subCal?param1=10&param2=5
 	@RequestMapping(value = "/subCal", method = RequestMethod.GET)
 	public int sub(@RequestParam("param1") int a, @RequestParam("param2") int b) {
+		log.info("sub hello log4j");
 		int sub=a - b;
 		return sub;
 	}
 	
-	//http://localhost/login?pwd=asdasd&userid=adsad
 	// http://localhost/jsonReqMul - send json in request body,
 	// input type json string
 	@RequestMapping(value = "/jsonReqMul", method = RequestMethod.POST, 
@@ -60,33 +54,18 @@ public class RestCalculator {
 		return mul;
 	}
 	
-	// http://localhost/calSI
-	/*
-	 	{
-			"principal":100000,
-			"time":12,
-			"rate":3
-		}	 
-	 */
-	@RequestMapping(value = "/calSI", method = RequestMethod.POST, 
-			consumes = MediaType.APPLICATION_JSON_VALUE)
-	public int calculateSI(@RequestBody  SimpleInterest si) {
-		int result=si.principal * si.time * si.rate / 100;
-		return result;
-	}
-	
-	
-	//http://localhost/allMath/10/5
-	@RequestMapping(value = "/allMath/{param1}/{param2}", 
+	// http://localhost/jsonRes/1/2
+	@RequestMapping(value = "/jsonRes/{param1}/{param2}", 
 			method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Output allArithmetic(@PathVariable(name="param1") int a,
-			@PathVariable(name="param2")  int b){
-		Output o=new Output();
-		o.sum=a+b;
-		o.sub=a-b;
-		o.mul=a*b;
-		o.div=a/b;
-		return o;
+	@ApiOperation(value="this is used for performing basic math operation on 2 numbers")
+	public Output calculator(@PathVariable int param1, @PathVariable int param2) {
+		log.info("add json log4j");
+		Output res = new Output();
+		res.setSum(param1 + param2);
+		res.setSub(param1 - param2);
+		res.setMul(param1 * param2);
+		res.setDiv(param1 / param2);
+		return res;
 	}
-	
+	*/
 }
