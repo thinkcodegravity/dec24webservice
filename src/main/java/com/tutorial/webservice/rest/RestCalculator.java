@@ -20,12 +20,14 @@ import com.google.common.net.HttpHeaders;
 import io.swagger.annotations.*;
 
 @RestController
+@Api(description="this is my web service that can calculate area of square, simple interesst, math opertion etc")
 public class RestCalculator {
 	Logger log=Logger.getLogger("RestCalculator");
 	
 	//  localhost/areaOfSquare/5
 	// configure this method/service with http URL
 	@RequestMapping(value = "/areaOfSquare/{input1}", method = RequestMethod.GET)
+	@ApiOperation(value="provide input as a side.. this service will return area of square ")
 	public int calculateSquare(@PathVariable(name="input1") int sides) {
 		int area=sides * sides;
 		return area;

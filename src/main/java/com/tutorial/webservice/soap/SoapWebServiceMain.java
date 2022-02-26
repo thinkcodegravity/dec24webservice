@@ -2,8 +2,11 @@ package com.tutorial.webservice.soap;
 import javax.xml.ws.Endpoint;
 public class SoapWebServiceMain {
 
+	// 65535 ports
 	public static void main(String[] args) {
-		Endpoint.publish("http://localhost:6060/math", new Math());
+		// if no port mentioned in the url.. port if by default 80.. (http=80)
+		//
+		Endpoint.publish("http://localhost:7070/math", new SoapCalculator());
 	}
 
 }
