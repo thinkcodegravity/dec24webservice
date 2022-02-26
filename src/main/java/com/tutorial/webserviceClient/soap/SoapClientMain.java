@@ -1,15 +1,17 @@
 package com.tutorial.webserviceClient.soap;
 
-import com.tutorial.webserviceClient.soap.stub.Math;
-import com.tutorial.webserviceClient.soap.stub.MathService;
+import com.tutorial.webserviceClient.soap.stub.*;
 
 public class SoapClientMain {
 
 	public static void main(String[] args) {
-		MathService ms=new MathService();
-		Math m=ms.getMathPort();
-		int result=m.calculateRectangle(10, 20);
-		System.out.println("area of rectangle:"+result);
+		SoapCalculatorService ms=new SoapCalculatorService();
+		SoapCalculator sc=ms.getSoapCalculatorPort();
+		int result=sc.add(15, 20);
+		int sub=sc.sub(20, 10);
+		String greet=sc.greeting("john");
+		
+		System.out.println("sum is :"+result);
 	}
 
 }
