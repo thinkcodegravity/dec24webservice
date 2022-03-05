@@ -29,6 +29,17 @@ public class RestCalculator {
 	@RequestMapping(value = "/areaOfSquare/{input1}", method = RequestMethod.GET)
 	@ApiOperation(value="provide input as a side.. this service will return area of square ")
 	public int calculateSquare(@PathVariable(name="input1") int sides) {
+		System.out.println("hi from sysout");
+		log.debug("1");								
+		log.info("2");								
+		try {
+			int i=10/0;
+		}catch(Exception e) {
+			log.error("3",e);
+		}								
+		log.warn("4");	
+		// all > debug > info > warn > error > NONE 
+		//%d{yy-MM-dd HH:mm:ss} %-5p %c{1}:%L - %m%n
 		int area=sides * sides;
 		return area;
 	}
