@@ -44,6 +44,21 @@ public interface SoapCalculator {
 
     /**
      * 
+     * @param arg0
+     * @return
+     *     returns com.tutorial.webserviceClient.soap.stub.Address
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "getRestaurantAddress", targetNamespace = "http://soap.webservice.tutorial.com/", className = "com.tutorial.webserviceClient.soap.stub.GetRestaurantAddress")
+    @ResponseWrapper(localName = "getRestaurantAddressResponse", targetNamespace = "http://soap.webservice.tutorial.com/", className = "com.tutorial.webserviceClient.soap.stub.GetRestaurantAddressResponse")
+    @Action(input = "http://soap.webservice.tutorial.com/SoapCalculator/getRestaurantAddressRequest", output = "http://soap.webservice.tutorial.com/SoapCalculator/getRestaurantAddressResponse")
+    public Address getRestaurantAddress(
+        @WebParam(name = "arg0", targetNamespace = "")
+        int arg0);
+
+    /**
+     * 
      * @param arg1
      * @param arg0
      * @return

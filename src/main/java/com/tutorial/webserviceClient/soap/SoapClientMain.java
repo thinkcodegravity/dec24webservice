@@ -10,7 +10,7 @@ public class SoapClientMain {
 		int result=sc.add(15, 20);
 		int sub=sc.sub(20, 10);
 		String greet=sc.greeting("john");
-		
+		Address a=sc.getRestaurantAddress(10);
 		System.out.println("sum is :"+result);
 	}
 

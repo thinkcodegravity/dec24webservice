@@ -17,7 +17,7 @@ import javax.xml.ws.WebServiceFeature;
  * Generated source version: 2.2
  * 
  */
-@WebServiceClient(name = "SoapCalculatorService", targetNamespace = "http://soap.webservice.tutorial.com/", wsdlLocation = "http://localhost:7070/math?wsdl")
+@WebServiceClient(name = "SoapCalculatorService", targetNamespace = "http://soap.webservice.tutorial.com/", wsdlLocation = "http://localhost:7080/calculation?wsdl")
 public class SoapCalculatorService
     extends Service
 {
@@ -30,7 +30,7 @@ public class SoapCalculatorService
         URL url = null;
         WebServiceException e = null;
         try {
-            url = new URL("http://localhost:7070/math?wsdl");
+            url = new URL("http://localhost:7080/calculation?wsdl");
         } catch (MalformedURLException ex) {
             e = new WebServiceException(ex);
         }

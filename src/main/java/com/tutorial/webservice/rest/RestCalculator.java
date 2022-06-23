@@ -20,8 +20,9 @@ import com.google.common.net.HttpHeaders;
 import io.swagger.annotations.*;
 
 @RestController
-@Api(description="this is my web service that can calculate area of square, simple interesst, math opertion etc")
+//@Api(description="this is my web service that can calculate area of square, simple interesst, math opertion etc")
 public class RestCalculator {
+	/*
 	Logger log=Logger.getLogger("RestCalculator");
 	
 	//  localhost/areaOfSquare/5
@@ -73,14 +74,7 @@ public class RestCalculator {
 		return mul;
 	}
 	
-	// http://localhost/calSI
-	/*
-	 	{
-			"principal":100000,
-			"time":12,
-			"rate":3
-		}	 
-	 */
+	
 	@RequestMapping(value = "/calSI", method = RequestMethod.POST, 
 			consumes = MediaType.APPLICATION_JSON_VALUE)
 	public int calculateSI(@RequestBody  SimpleInterest si) {
@@ -101,5 +95,5 @@ public class RestCalculator {
 		o.div=a/b;
 		return o;
 	}
-	
+*/	
 }

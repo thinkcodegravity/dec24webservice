@@ -15,8 +15,35 @@ import com.tutorial.webserviceClient.rest.Output;
 public class RestClientMain {
 
 	public static void main(String[] args) {
-		testJsonRes();
+		complexOutput();
 	}
+	public static void calculatePostSI() {
+		RestTemplate calPostSI=new RestTemplate(); // Rest stub program
+		WSClientSimplInterest myInput=new WSClientSimplInterest();
+		int res=calPostSI.postForObject("http://localhost/calSimpleInterest",  myInput , Integer.class);
+		System.out.println("simple interest is :"+res);
+	
+	}
+	public static void complexOutput() {
+		RestTemplate multiOp=new RestTemplate(); // Rest stub program
+		ComplexOutputJson res=multiOp.getForObject("http://localhost/multiOutput/5", ComplexOutputJson.class);
+		System.out.println("mutli output is :"+res);
+	
+		
+	}
+	
+	public static void calculateSI() {
+		RestTemplate calSI=new RestTemplate(); // Rest stub program
+		int res=calSI.getForObject("http://localhost/calSI?p=1000&t=30&r=5", Integer.class);
+		System.out.println("simple interest is :"+res);
+	}
+	public static void callAreaOfRectangleWebService() {
+		RestTemplate rectangle=new RestTemplate(); // Rest stub program
+		int res=rectangle.getForObject("http://localhost/rectangle/5/7", Integer.class);
+		System.out.println("area of rectangle is :"+res);
+	}
+	
+	
 /*	
 	Get Http client
 	URL = ? includes url and input both
