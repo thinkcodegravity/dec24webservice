@@ -20,7 +20,6 @@ import com.google.common.net.HttpHeaders;
 import io.swagger.annotations.*;
 // @ = annotation
 @RestController
-@Api(description="This is test webservice for Rest tutorial")
 public class RestService {
 
 	Logger log=Logger.getLogger("RestService");
