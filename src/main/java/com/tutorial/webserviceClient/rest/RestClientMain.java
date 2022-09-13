@@ -1,49 +1,18 @@
 package com.tutorial.webserviceClient.rest;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.MediaType;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
-
-import com.tutorial.webserviceClient.rest.Input;
-import com.tutorial.webserviceClient.rest.Output;
 
 public class RestClientMain {
 
 	public static void main(String[] args) {
-		complexOutput();
+		testSimInt();
+		/*
+		testMultiplyJsonReq();
+		testAdd(); // Consume get rest service with path param
+		testSub(); // Consume get rest service with query string input
+		testJsonRes(); // Consume get rest service with JSON output
+		testMultiplyJsonReq(); // Consume post rest service with JSON input
+		*/
 	}
-	public static void calculatePostSI() {
-		RestTemplate calPostSI=new RestTemplate(); // Rest stub program
-		WSClientSimplInterest myInput=new WSClientSimplInterest();
-		int res=calPostSI.postForObject("http://localhost/calSimpleInterest",  myInput , Integer.class);
-		System.out.println("simple interest is :"+res);
-	
-	}
-	public static void complexOutput() {
-		RestTemplate multiOp=new RestTemplate(); // Rest stub program
-		ComplexOutputJson res=multiOp.getForObject("http://localhost/multiOutput/5", ComplexOutputJson.class);
-		System.out.println("mutli output is :"+res);
-	
-		
-	}
-	
-	public static void calculateSI() {
-		RestTemplate calSI=new RestTemplate(); // Rest stub program
-		int res=calSI.getForObject("http://localhost/calSI?p=1000&t=30&r=5", Integer.class);
-		System.out.println("simple interest is :"+res);
-	}
-	public static void callAreaOfRectangleWebService() {
-		RestTemplate rectangle=new RestTemplate(); // Rest stub program
-		int res=rectangle.getForObject("http://localhost/rectangle/5/7", Integer.class);
-		System.out.println("area of rectangle is :"+res);
-	}
-	
-	
 /*	
 	Get Http client
 	URL = ? includes url and input both
@@ -51,16 +20,16 @@ public class RestClientMain {
 		int/string/float etc.. if response is json an object(json compliant)
 */
 	public static void testAdd() {
-		RestTemplate square=new RestTemplate(); // Rest stub program
-		int res=square.getForObject("http://localhost:6060/areaOfSquare/5", Integer.class);
+		RestTemplate getClient=new RestTemplate(); // similar to soap stub program
+		int res=getClient.getForObject("http://localhost/add/10/30", Integer.class);
 		System.out.println("Add rest service result :"+res);
 	}
 	// get method
 	// URL = url include http part + input
 	// output = resonse
 	public static void testSub() {
-		RestTemplate subWebService=new RestTemplate(); // Rest stub program
-		int res=subWebService.getForObject("http://localhost:6060/subCal?param1=10&param2=5", Integer.class);
+		RestTemplate getTest=new RestTemplate();
+		int res=getTest.getForObject("http://localhost/sub?number1=50&number2=15", Integer.class);
 		System.out.println("Sub rest service result :"+res);
 	}
 /*
@@ -70,30 +39,38 @@ public class RestClientMain {
 	Response = what output is expected from rest services
 		int/string/float etc.. object(json compliant) if response is json
 */
-	public static void testSimpleInterstJsonInput()
+	public static void testSimInt()
 	{
-
-		RestTemplate postTest=new RestTemplate();
-		SI input=new SI();
-		input.principal=10000; 
-		input.time=30;
-		input.rate=4;
-		// {	"principal":10000,	"time":30,	"rate":4 }
-		int res=postTest.postForObject
-				("http://localhost:6060/calSI",
-				input,
-				Integer.class);
-	System.out.println(res);
+		SimpleInterestInput si=new SimpleInterestInput ();
+		si.principal=200000; si.time=120; si.rate=2;
+		RestTemplate post=new RestTemplate();
+	int res=post.postForObject("http://localhost/simpleInt", 
+						si
+						, Integer.class);
+	System.out.println(res );
 	}
 	public static void testJsonRes()
 	{
-		RestTemplate square=new RestTemplate(); // Rest stub program
-		JSONOutput res=square.getForObject("http://localhost:6060/allMath/50/10", JSONOutput.class );
-		System.out.println(res);
+		RestTemplate postTest=new RestTemplate();
+		ComplexOutput res=postTest.getForObject("http://localhost/allMath/100/10", ComplexOutput.class);
+		/*
+		{
+		    "sum": 15,
+		    "sub": 5,
+		    "mul": 50,
+		    "div": 2
+		}
+		*/
+		System.out.println(res.sum);
+		System.out.println(res.sub);
+		System.out.println(res.mul);
+		System.out.println(res.div);
+		
 		
 	}
 	/*
-	 	public static void testSubP() {
+	 
+	public static void testSubP() {
 		RestTemplate getTest=new RestTemplate();
 		
 		HttpHeaders headers = new HttpHeaders();
