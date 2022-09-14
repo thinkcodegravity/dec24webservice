@@ -19,11 +19,14 @@ import com.google.common.net.HttpHeaders;
 
 import io.swagger.annotations.*;
 // @ = annotation
+// Rest webservice program
 @RestController
 public class RestService {
 //http://locahost/add/10/30
 	// mapping : establishing a link/map/connection between http url and method
 		@RequestMapping(value = "/add/{a}/{b}", method = RequestMethod.GET)
+		// Rest web method
+		// Rest Application Programming Interface
 		public int addition(@PathVariable int a,@PathVariable int b ){
 			int sum=a+b;
 			return sum;

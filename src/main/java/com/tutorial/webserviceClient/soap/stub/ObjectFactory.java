@@ -26,10 +26,6 @@ public class ObjectFactory {
 
     private final static QName _Add_QNAME = new QName("http://soap.webservice.tutorial.com/", "add");
     private final static QName _AddResponse_QNAME = new QName("http://soap.webservice.tutorial.com/", "addResponse");
-    private final static QName _GetRestaurantAddress_QNAME = new QName("http://soap.webservice.tutorial.com/", "getRestaurantAddress");
-    private final static QName _GetRestaurantAddressResponse_QNAME = new QName("http://soap.webservice.tutorial.com/", "getRestaurantAddressResponse");
-    private final static QName _Greeting_QNAME = new QName("http://soap.webservice.tutorial.com/", "greeting");
-    private final static QName _GreetingResponse_QNAME = new QName("http://soap.webservice.tutorial.com/", "greetingResponse");
     private final static QName _Sub_QNAME = new QName("http://soap.webservice.tutorial.com/", "sub");
     private final static QName _SubResponse_QNAME = new QName("http://soap.webservice.tutorial.com/", "subResponse");
 
@@ -57,38 +53,6 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetRestaurantAddress }
-     * 
-     */
-    public GetRestaurantAddress createGetRestaurantAddress() {
-        return new GetRestaurantAddress();
-    }
-
-    /**
-     * Create an instance of {@link GetRestaurantAddressResponse }
-     * 
-     */
-    public GetRestaurantAddressResponse createGetRestaurantAddressResponse() {
-        return new GetRestaurantAddressResponse();
-    }
-
-    /**
-     * Create an instance of {@link Greeting }
-     * 
-     */
-    public Greeting createGreeting() {
-        return new Greeting();
-    }
-
-    /**
-     * Create an instance of {@link GreetingResponse }
-     * 
-     */
-    public GreetingResponse createGreetingResponse() {
-        return new GreetingResponse();
-    }
-
-    /**
      * Create an instance of {@link Sub }
      * 
      */
@@ -102,14 +66,6 @@ public class ObjectFactory {
      */
     public SubResponse createSubResponse() {
         return new SubResponse();
-    }
-
-    /**
-     * Create an instance of {@link Address }
-     * 
-     */
-    public Address createAddress() {
-        return new Address();
     }
 
     /**
@@ -136,58 +92,6 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://soap.webservice.tutorial.com/", name = "addResponse")
     public JAXBElement<AddResponse> createAddResponse(AddResponse value) {
         return new JAXBElement<AddResponse>(_AddResponse_QNAME, AddResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetRestaurantAddress }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GetRestaurantAddress }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://soap.webservice.tutorial.com/", name = "getRestaurantAddress")
-    public JAXBElement<GetRestaurantAddress> createGetRestaurantAddress(GetRestaurantAddress value) {
-        return new JAXBElement<GetRestaurantAddress>(_GetRestaurantAddress_QNAME, GetRestaurantAddress.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GetRestaurantAddressResponse }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GetRestaurantAddressResponse }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://soap.webservice.tutorial.com/", name = "getRestaurantAddressResponse")
-    public JAXBElement<GetRestaurantAddressResponse> createGetRestaurantAddressResponse(GetRestaurantAddressResponse value) {
-        return new JAXBElement<GetRestaurantAddressResponse>(_GetRestaurantAddressResponse_QNAME, GetRestaurantAddressResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Greeting }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link Greeting }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://soap.webservice.tutorial.com/", name = "greeting")
-    public JAXBElement<Greeting> createGreeting(Greeting value) {
-        return new JAXBElement<Greeting>(_Greeting_QNAME, Greeting.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link GreetingResponse }{@code >}
-     * 
-     * @param value
-     *     Java instance representing xml element's value.
-     * @return
-     *     the new instance of {@link JAXBElement }{@code <}{@link GreetingResponse }{@code >}
-     */
-    @XmlElementDecl(namespace = "http://soap.webservice.tutorial.com/", name = "greetingResponse")
-    public JAXBElement<GreetingResponse> createGreetingResponse(GreetingResponse value) {
-        return new JAXBElement<GreetingResponse>(_GreetingResponse_QNAME, GreetingResponse.class, null, value);
     }
 
     /**
