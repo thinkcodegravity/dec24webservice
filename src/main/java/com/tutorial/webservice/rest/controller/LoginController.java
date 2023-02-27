@@ -12,7 +12,7 @@ public class LoginController {
 	
 	@Autowired
 	LoginBusiness lb;
-	@RequestMapping(value = "/login/{userid}/{pwd}", method = RequestMethod.GET)
+	@RequestMapping(value = "/logrest/{userid}/{pwd}", method = RequestMethod.GET)
 	public String loginPage(@PathVariable String userid,@PathVariable String pwd){
 		boolean result=lb.loginCheck(userid, pwd);
 		if(result==true)

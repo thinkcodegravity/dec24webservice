@@ -4,24 +4,33 @@ import org.springframework.web.client.RestTemplate;
 public class RestClientMain {
 
 	public static void main(String[] args) {
-		testSimInt();
-		/*
-		testMultiplyJsonReq();
-		testAdd(); // Consume get rest service with path param
-		testSub(); // Consume get rest service with query string input
-		testJsonRes(); // Consume get rest service with JSON output
-		testMultiplyJsonReq(); // Consume post rest service with JSON input
-		*/
+		testSimpleInterest();
 	}
 /*	
-	Get Http client
+	Get Http client - browser, postman , RestTemplate
 	URL = ? includes url and input both
 	Response = what output is expected from rest services
 		int/string/float etc.. if response is json an object(json compliant)
 */
+	public static void testSimpleInterest() {
+		RestTemplate client=new RestTemplate(); // similar to soap stub program
+		BankInput input=new BankInput();
+		input.customerName="jane";
+		input.principal=25000;
+		input.rate=5;
+		input.time=30;
+		try {
+		int res=client.postForObject("http://localhost/abcd", input, Integer.class);
+		System.out.print(res);
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 	public static void testAdd() {
 		RestTemplate getClient=new RestTemplate(); // similar to soap stub program
-		int res=getClient.getForObject("http://localhost/add/10/30", Integer.class);
+		int res=getClient.getForObject("http://localhost/sum/10/25", Integer.class);
 		System.out.println("Add rest service result :"+res);
 	}
 	// get method

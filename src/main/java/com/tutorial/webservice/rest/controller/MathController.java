@@ -22,6 +22,9 @@ import io.swagger.annotations.*;
 // Rest webservice program
 @RestController
 public class MathController {
+	
+	Logger log=Logger.getLogger("MathController");
+	
 //http://locahost/add/10/30
 	// mapping : establishing a link/map/connection between http url and method
 		@RequestMapping(value = "/add/{a}/{b}", method = RequestMethod.GET)

@@ -1,6 +1,7 @@
 package com.tutorial.webservice.client.soap;
 
-import com.tutorial.webservice.client.soap.stub.*;
+import com.tutorial.webserviceClient.soap.stub.SoapCalculator;
+import com.tutorial.webserviceClient.soap.stub.SoapCalculatorService;
 
 public class SoapClientMain {
 
@@ -12,7 +13,7 @@ public class SoapClientMain {
 		//1) take input 15,20.. convert into xml soap request
 		//2) connect to http soap webserice
 		//3) transfer the xml soap request to webservice
-		int result=sc.add(15, 20);
+		int result=sc.add(75, 15);
 		System.out.println( result);
 		
 		

@@ -1,4 +1,8 @@
 package mvc.aspects;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -6,12 +10,22 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class ProfileAspect  {
+//   Advice	(point cut)
+// WHEN to apply code ( WHO do you apply code to)
 	
-	@Before("within(mvc.service.LoginBusiness)")
-	public void getResponseTime( ) throws Throwable{
-		System.out.println( " this is the common aspect code");
+	@After("within(mvc.service.LoginBusiness)")
+	public void commonCode() throws Throwable{
+		System.out.println( " in aspect ");
 	}
-	
+	/*
+	@Around("within(mvc.service.LoginBusiness)")
+	public boolean commonCode(ProceedingJoinPoint jp) throws Throwable{
+		System.out.println( " in aspect ");
+		boolean res=(boolean)jp.proceed();
+		System.out.println( " in aspect again");
+		return res;
+	}
+	*/
 	
 	/*
 	@Around("within(com.spring.beans.CartBean)")
