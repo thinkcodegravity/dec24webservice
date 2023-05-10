@@ -4,7 +4,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestClientMain {
 
 	public static void main(String[] args) {
-		testSimpleInterest();
+		testSimInt();
 	}
 /*	
 	Get Http client - browser, postman , RestTemplate
@@ -12,25 +12,12 @@ public class RestClientMain {
 	Response = what output is expected from rest services
 		int/string/float etc.. if response is json an object(json compliant)
 */
-	public static void testSimpleInterest() {
-		RestTemplate client=new RestTemplate(); // similar to soap stub program
-		BankInput input=new BankInput();
-		input.customerName="jane";
-		input.principal=25000;
-		input.rate=5;
-		input.time=30;
-		try {
-		int res=client.postForObject("http://localhost/abcd", input, Integer.class);
-		System.out.print(res);
-		}
-		catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-	}
+	
 	public static void testAdd() {
 		RestTemplate getClient=new RestTemplate(); // similar to soap stub program
-		int res=getClient.getForObject("http://localhost/sum/10/25", Integer.class);
+		int res=getClient.getForObject(
+				"http://localhost/add/35/5",
+				Integer.class);
 		System.out.println("Add rest service result :"+res);
 	}
 	// get method
@@ -38,7 +25,8 @@ public class RestClientMain {
 	// output = resonse
 	public static void testSub() {
 		RestTemplate getTest=new RestTemplate();
-		int res=getTest.getForObject("http://localhost/sub?number1=50&number2=15", Integer.class);
+		int res=getTest.getForObject
+				("http://localhost/sub?number1=50&number2=15", Integer.class);
 		System.out.println("Sub rest service result :"+res);
 	}
 /*
@@ -53,9 +41,12 @@ public class RestClientMain {
 		SimpleInterestInput si=new SimpleInterestInput ();
 		si.principal=200000; si.time=120; si.rate=2;
 		RestTemplate post=new RestTemplate();
-	int res=post.postForObject("http://localhost/simpleInt", 
-						si
-						, Integer.class);
+	int res=post.postForObject(
+			
+			"http://localhost/simpleInt", 
+						si ,
+					Integer.class);
+	
 	System.out.println(res );
 	}
 	public static void testJsonRes()

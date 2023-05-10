@@ -105,6 +105,7 @@
 						<wsdlUrl>http://localhost:7080/calculation?wsdl</wsdlUrl>
 					</wsdlUrls>
 					<packageName>com.tutorial.webserviceClient.soap.stub</packageName>
+					
 					<sourceDestDir>src/main/java/</sourceDestDir>
 				</configuration>
 				

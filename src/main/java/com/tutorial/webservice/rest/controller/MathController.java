@@ -18,12 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.google.common.net.HttpHeaders;
 
 import io.swagger.annotations.*;
+import mvc.service.LoginBusiness;
 // @ = annotation
 // Rest webservice program
 @RestController
 public class MathController {
+ 
 	
-	Logger log=Logger.getLogger("MathController");
 	
 //http://locahost/add/10/30
 	// mapping : establishing a link/map/connection between http url and method
@@ -34,7 +35,7 @@ public class MathController {
 			int sum=a+b;
 			return sum;
 		}
-	 
+	 // http://localhost/sub?number1=10&number2=20
 		@RequestMapping(value = "/sub", method = RequestMethod.GET)
 		public int substract(@RequestParam int number1,@RequestParam int number2){
 			int subs=number1-number2;

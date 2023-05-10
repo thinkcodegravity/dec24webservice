@@ -1,5 +1,7 @@
 package mvc.service;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -7,6 +9,7 @@ import mvc.dataAccessLayer.UserRepository;
 import mvc.dataAccessLayer.UsersEntity;
 
 @Service
+@Scope("session")
 public class LoginBusiness {
 	
 	// dependancy injection
@@ -14,6 +17,17 @@ public class LoginBusiness {
 	// to create object for below line
 	@Autowired
 	UserRepository ur;
+	ArrayList<String> cart=new ArrayList<String> (); 
+	public String browse(String product) {
+		cart.add(product);
+		return cart.toString();
+	}
+	public boolean checkUserPwd(String userid,String password) {
+		if(userid.equals("john") && password.equals("john1!"))
+			return true;
+		else
+			return false;
+	}
 	
 	public boolean delete(String userid) {
 		UsersEntity ue=new UsersEntity();
