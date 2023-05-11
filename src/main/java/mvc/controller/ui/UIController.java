@@ -11,12 +11,30 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.tutorial.webservice.client.rest.BankInput;
+
 import mvc.service.LoginBusiness;
 
 @Controller
-@Scope("session")
+@Scope("prototype")
 public class UIController {
 	
+	
+	// this controller does not know how to register
+		// it depends on login business to help with register
+		// loginBusienss DEPENDANCY
+		@Autowired // spring framework will create object for you
+		LoginBusiness lb; // NEVER EVER create/initialize "new"
+	// autowired can be used only on programs that
+		// are special spring framwork program
+		
+		/*
+		@Autowired 
+		BankInput bi;
+NO - BankInput  does not have
+@ spring framework annottion
+		*/
+		
 	@RequestMapping("/browse")
 	@ResponseBody
 	public String browse(@RequestParam String product) {
@@ -38,13 +56,6 @@ public class UIController {
 	
 	
 	
-	// this controller does not know how to register
-	// it depends on login business to help with register
-	// loginBusienss DEPENDANCY
-		@Autowired // spring framework will create object for you
-		LoginBusiness lb; // NEVER EVER create/initialize "new"
-	// autowired can be used only on programs that
-	// are special spring framwork program
 	
 	@RequestMapping("/delete")
 	public String del(@RequestParam String userid) {

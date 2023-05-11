@@ -9,7 +9,7 @@ import mvc.dataAccessLayer.UserRepository;
 import mvc.dataAccessLayer.UsersEntity;
 
 @Service
-@Scope("session")
+@Scope("prototype")
 public class LoginBusiness {
 	
 	// dependancy injection
