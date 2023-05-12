@@ -19,6 +19,7 @@ public class LoginBusiness {
 	UserRepository ur;
 	ArrayList<String> cart=new ArrayList<String> (); 
 	public String browse(String product) {
+		System.out.println(" in business logic/service");
 		cart.add(product);
 		return cart.toString();
 	}

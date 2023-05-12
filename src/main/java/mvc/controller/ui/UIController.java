@@ -38,6 +38,7 @@ NO - BankInput  does not have
 	@RequestMapping("/browse")
 	@ResponseBody
 	public String browse(@RequestParam String product) {
+		System.out.println(" in controller");
 		String result=lb.browse(product);
 		return result;
 	}
