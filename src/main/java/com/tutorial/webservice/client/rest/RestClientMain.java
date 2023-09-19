@@ -4,7 +4,7 @@ import org.springframework.web.client.RestTemplate;
 public class RestClientMain {
 
 	public static void main(String[] args) {
-		testSimInt();
+		testJsonRes();
 	}
 /*	
 	Get Http client - browser, postman , RestTemplate
@@ -16,17 +16,17 @@ public class RestClientMain {
 	public static void testAdd() {
 		RestTemplate getClient=new RestTemplate(); // similar to soap stub program
 		int res=getClient.getForObject(
-				"http://localhost/add/35/5",
+				"http://localhost/additionService/35/5",
 				Integer.class);
 		System.out.println("Add rest service result :"+res);
 	}
 	// get method
 	// URL = url include http part + input
 	// output = resonse
-	public static void testSub() {
+	public static void testArea() {
 		RestTemplate getTest=new RestTemplate();
 		int res=getTest.getForObject
-				("http://localhost/sub?number1=50&number2=15", Integer.class);
+				("http://localhost/areaOfRectangle?breadth=25&length=10", Integer.class);
 		System.out.println("Sub rest service result :"+res);
 	}
 /*
@@ -38,8 +38,8 @@ public class RestClientMain {
 */
 	public static void testSimInt()
 	{
-		SimpleInterestInput si=new SimpleInterestInput ();
-		si.principal=200000; si.time=120; si.rate=2;
+		PostWsJsonInput si=new PostWsJsonInput ();
+		si.principal=250000; si.time=10; si.rate=6;
 		RestTemplate post=new RestTemplate();
 	int res=post.postForObject(
 			
@@ -51,8 +51,8 @@ public class RestClientMain {
 	}
 	public static void testJsonRes()
 	{
-		RestTemplate postTest=new RestTemplate();
-		ComplexOutput res=postTest.getForObject("http://localhost/allMath/100/10", ComplexOutput.class);
+		RestTemplate restClient=new RestTemplate();
+		ComplexOutput res=restClient.getForObject("http://localhost/allMath/100/10", ComplexOutput.class);
 		/*
 		{
 		    "sum": 15,

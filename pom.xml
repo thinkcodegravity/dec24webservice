@@ -106,6 +106,7 @@
 					</wsdlUrls>
 					<packageName>com.tutorial.webserviceClient.soap.stub</packageName>
 					
+					
 					<sourceDestDir>src/main/java/</sourceDestDir>
 				</configuration>
 				

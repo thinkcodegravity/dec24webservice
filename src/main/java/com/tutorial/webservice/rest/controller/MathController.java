@@ -20,47 +20,77 @@ import com.google.common.net.HttpHeaders;
 import io.swagger.annotations.*;
 import mvc.service.LoginBusiness;
 
-// @ = annotation
-// Rest webservice program
 @RestController
+// services = addition and subtractoin
+// web service = Use additon and sub service over the web/internet
 public class MathController {
-
-	Logger log = Logger.getLogger("MathController");
-
-	@RequestMapping(value = "/div/{a}/{b}", method = RequestMethod.GET)
-	public int division(@PathVariable int a, @PathVariable int b) {
-		int div =0;
-		try {
-			div = a / b;
-			System.out.println("printing from sysout division done");
-			log.debug("1");
-			log.info("2");
-			log.warn("3");
-			log.error("4");
+	
+	Logger logs=Logger.getLogger("MathController");
+	
+	// http://localhost/areaOfRectangle?breadth=25&length=10
+		@RequestMapping(value = "/login", method = RequestMethod.GET)
+		public boolean checkCreden(@RequestParam String uid,@RequestParam String pwd) {
+		// debug > info > warn > error	
+		// log4j logging level	
+			logs.debug("1");// 
+			logs.info("2");// 
+			logs.warn("3");
+			logs.error("4");
+			try {
+				
+			}catch(Exception e) {
+				logs.error("app failed",e);
+			}
 			
-		} catch (Exception e) {
-			System.out.println("error occured");
-			return -1;
+			logs.info("customer typed userid :"+uid+"  password:"+pwd);
+			System.out.println("customer typed userid :"+uid+"  password:"+pwd);
+			boolean result=false;
+			if(uid.equals("john") && pwd.equals("john1!"))
+				result=true;
+			else if(uid.equals("jane") && pwd.equals("jane1!"))
+			{
+				
+				result=true;
+			}
+			else if(uid.equals("mike") && pwd.equals("mike1!"))
+				result=true;
+			else
+				result=false;
+			System.out.println("login attempt:"+result);
+			return result;
 		}
-		return div;
-	}
-
-//http://locahost/add/10/30
-	// mapping : establishing a link/map/connection between http url and method
-	@RequestMapping(value = "/add/{a}/{b}", method = RequestMethod.GET)
-	// Rest web method
-	// Rest Application Programming Interface
-	public int addition(@PathVariable int a, @PathVariable int b) {
-		int sum = a + b;
+		
+	
+	// http://localhost/additionService/100/50
+	// associate add method to a http url
+	// @RequestMapping = allows you to LINK a java method to a URL
+	@RequestMapping(value = "/additionService/{a}/{b}", method = RequestMethod.GET)
+	public int add(@PathVariable int  a,@PathVariable  int b) {
+		int sum=a+b;
 		return sum;
 	}
-
-	// http://localhost/sub?number1=10&number2=20
-	@RequestMapping(value = "/sub", method = RequestMethod.GET)
-	public int substract(@RequestParam int number1, @RequestParam int number2) {
-		int subs = number1 - number2;
-		return subs;
+	
+	// mapping = connect method to a url
+	@RequestMapping(value = "/subService/{a}/{b}", method = RequestMethod.GET)
+	public int sub(@PathVariable int a,@PathVariable int b) {
+		int sub=a-b;
+		return sub;
 	}
+	
+	// http://localhost/areaOfRectangle?breadth=25&length=10
+	@RequestMapping(value = "/areaOfRectangle", method = RequestMethod.GET)
+	public int areaofRec(@RequestParam int breadth,@RequestParam int length) {
+		int areaOfRectan=length * breadth;
+		return areaOfRectan;
+	}
+	
+
+	@RequestMapping(value = "/simpleInt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+	public int calculateSimpleInterest(@RequestBody SimpleInterestInput si) {
+		int result = si.principal * si.time * si.rate / 100;
+		return result;
+	}
+	
 
 	@RequestMapping(value = "/allMath/{a}/{b}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ComplexOutput allMathOperations(@PathVariable int a, @PathVariable int b) {
@@ -71,18 +101,5 @@ public class MathController {
 		result.div = a / b;
 		return result;
 	}
-
-	@RequestMapping(value = "/simpleInt", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-	public int calculateSimpleInterest(@RequestBody SimpleInterestInput si) {
-		int result = si.principal * si.time * si.rate / 100;
-		return result;
-	}
-
-	// sample webservice that take(input) and gives(output) complex data
-	@RequestMapping(value = "/testing", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public ComplexOutput test(@RequestBody SimpleInterestInput si) {
-		ComplexOutput res = new ComplexOutput();
-		return res;
-	}
-
+	
 }
