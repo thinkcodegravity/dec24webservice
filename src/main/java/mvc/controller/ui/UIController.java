@@ -20,21 +20,6 @@ import mvc.service.LoginBusiness;
 public class UIController {
 	
 	
-	// this controller does not know how to register
-		// it depends on login business to help with register
-		// loginBusienss DEPENDANCY
-		@Autowired // spring framework will create object for you
-		LoginBusiness lb; // NEVER EVER create/initialize "new"
-	// autowired can be used only on programs that
-		// are special spring framwork program
-		
-		/*
-		@Autowired 
-		BankInput bi;
-NO - BankInput  does not have
-@ spring framework annottion
-		*/
-		
 	@RequestMapping("/browse")
 	@ResponseBody
 	public String browse(@RequestParam String product) {
@@ -52,12 +37,7 @@ NO - BankInput  does not have
 		else
 			return "loginfailed";
 	}
-	
-	
-	
-	
-	
-	
+		
 	@RequestMapping("/delete")
 	public String del(@RequestParam String userid) {
 		boolean res=lb.delete(userid);
@@ -74,10 +54,12 @@ NO - BankInput  does not have
 		else
 			return "failure";
 	}
-/*
-http://localhost<prefix>return string<suffix>	
-http://localhost/view/success.jsp	
-*/	
+	@Autowired // spring framework will create object for you
+	LoginBusiness lb; // NEVER EVER create/initialize "new"
+	
+	
+	
+	
 	
 	
 	
@@ -87,24 +69,28 @@ http://localhost/view/success.jsp
 		System.out.println("in controller");
 		boolean res=lb.loginCheck(userid, password);
 		if(res==true)
-			return "/view/success.jsp";
+			return "success";
 		else
 			return "failure";
 	}
-	
-	// http://ipaddress:port/success
-	//http://ipaddress:port/<prefix><return><suffix>
-	//http://ipaddress:port/jsp/welcome.jsp
 
-	@RequestMapping("/success")
-	public String welcome() {
-		return "welcome";
-	}
-	// /view/welcome.jsp
 	
+
+	
+	
+	
+	
+	
+	// http://localhost<Prefix>success<suffix>
+	// http://localhost/view/success.jsp		
+							
+
 	@RequestMapping("/failure")
 	public String error() {
 		return "error";
+		// http://localhost<Prefix>welcome<suffix>
+		// http://localhost/view/error.jsp		
+		
 	}
 
 }

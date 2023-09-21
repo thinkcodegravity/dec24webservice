@@ -8,7 +8,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @SpringBootApplication
+
+//controller and service package names
 @ComponentScan({"com.tutorial.webservice.rest.controller","mvc.aspects","mvc.controller.ui","mvc.service"})
+
+// repository/data accss layer package name
 @EnableJpaRepositories("mvc.dataAccessLayer")
 @EntityScan({"mvc.dataAccessLayer"})
 @EnableTransactionManagement

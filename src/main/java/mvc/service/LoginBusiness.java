@@ -15,8 +15,6 @@ public class LoginBusiness {
 	// dependancy injection
 	// instrcution to sprinng framework
 	// to create object for below line
-	@Autowired
-	UserRepository ur;
 	ArrayList<String> cart=new ArrayList<String> (); 
 	public String browse(String product) {
 		System.out.println(" in business logic/service");
@@ -51,13 +49,16 @@ public class LoginBusiness {
 		ur.save(ue);
 		return true;
 	}
+	@Autowired
+	UserRepository ur;
 	
 	public boolean loginCheck(String userid, String pwd) {
 		System.out.println("in service");
 		int res=ur.checkUidPwdInDB(userid, pwd);
-		if(res>0)
-			return true;
-		else
+//SELECT count(1) FROM users WHERE userid= 'jane' and password='jane2@'		
+		if(res==0)
 			return false;
+		else
+			return true;
 	}
 }

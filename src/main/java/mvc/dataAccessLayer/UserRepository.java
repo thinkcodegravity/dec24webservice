@@ -14,6 +14,26 @@ extends JpaRepository<UsersEntity, String> {
 		@Query(value="SELECT count(1) FROM users WHERE userid= ?1 and password=?2",nativeQuery = true)
 		public int checkUidPwdInDB(String users,String password);
 			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 	
 		// start with findBy
 		// name of column should be java variable 	
