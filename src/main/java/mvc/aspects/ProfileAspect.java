@@ -13,7 +13,7 @@ public class ProfileAspect  {
 //   Advice	(point cut)
 // WHEN to apply code ( WHO do you apply code to)
 	
-	@After("within(mvc.service.LoginBusiness)")
+	@Before("within(mvc.service.LoginBusiness)")
 	public void commonCode() throws Throwable{
 		System.out.println( " in aspect ");
 	}
