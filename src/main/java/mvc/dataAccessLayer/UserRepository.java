@@ -46,6 +46,13 @@ extends JpaRepository<UsersEntity, String> {
 		// JPQL
 		@Query("SELECT u FROM UsersEntity u WHERE u.uid= ?1 and u.pwd=?2")
 		public List<UsersEntity> verify(String users,String password);
+		/*
+		 	verify("john","john1!");
+		 	verify("jane","jane1!");
+		 	verify("mike","mike!");
+		 	verify("andy","andy123!");
+		 	
+		 */
 		//SQL
 		@Query(value="SELECT * FROM users WHERE userid= ?1 and password=?2",nativeQuery = true)
 		public List<UsersEntity> nativeVerify(String users,String password);
